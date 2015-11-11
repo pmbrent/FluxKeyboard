@@ -1,6 +1,8 @@
 (function() {
 
-  var _playingKeys = [];
+  var _playingKeys = window._playingKeys = [];
+  var CHANGE_EVENT = window.CHANGE_EVENT = "change";
+
 
   var KeyStore = window.KeyStore = $.extend({}, EventEmitter.prototype);
 
@@ -8,16 +10,24 @@
     return _playingKeys.slice();
   };
 
-  Keystore.addKey = function (keyName) {
-    _playingKeys.push(keyName);
+  KeyStore.addKey = function (keyName) {
+    if (_playingKeys.indexOf(keyName) === -1) {
+      _playingKeys.push(keyName);
+      this.changed();
+    }
   };
 
-  Keystore.removeKey = function (keyName) {
+  KeyStore.removeKey = function (keyName) {
     _playingKeys.splice(_playingKeys.indexOf(keyName), 1);
+    this.changed();
   };
 
-  Keystore.changed = function () {
+  KeyStore.changed = function () {
     this.emit(CHANGE_EVENT);
+  };
+
+  KeyStore.addChangeHandler = function(callback) {
+    this.on("change", callback);
   };
 
   KeyStore.dispatcherID = AppDispatcher.register(function (payload) {
