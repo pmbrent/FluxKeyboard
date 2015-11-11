@@ -22,6 +22,9 @@ var Key = React.createClass({
 
   render: function () {
     var classStr = this.state.playing ? "key playing" : "key";
+    if (this.props.noteName.indexOf("#") != -1) {
+      classStr += " sharp";
+    }
     return (
           <div className={classStr}
                 key={this.props.noteName}>{this.props.noteName}

@@ -16,9 +16,23 @@
 
 
 .key {
-  color: blue;
+  font-size: 20px;
+  color: grey;
+  border: 3px solid grey;
+  border-style: outset;
+  padding: 2px;
+  width: 50px;
+  float: left;
+  height: 200px;
 }
 
 .playing {
   color: red;
+  border-style: inset;
+}
+
+.sharp {
+  background: black;
+  width: 35px;
+  height: 150px;
 }
