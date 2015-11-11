@@ -11,6 +11,7 @@ var Keyboard = React.createClass({
     return (
         <div id="keyboard">
           {keys}
+          <Recorder />
         </div>
     );
   }
