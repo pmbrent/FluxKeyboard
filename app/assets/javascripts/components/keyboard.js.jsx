@@ -12,6 +12,7 @@ var Keyboard = React.createClass({
         <div id="keyboard">
           {keys}
           <Recorder />
+          <Jukebox />
         </div>
     );
   }

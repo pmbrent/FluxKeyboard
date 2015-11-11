@@ -16,6 +16,10 @@ var Recorder = React.createClass({
     );
   },
 
+  saveRecording: function () {
+    //implement this!
+  },
+
   startRecording: function () {
     this.setState({isRecording: true});
     this.state.track.startRecording();
@@ -26,7 +30,7 @@ var Recorder = React.createClass({
     this.state.track.stopRecording();
   },
 
-  play: function () {
+  playRecording: function () {
     this.state.track.play();
   },
 
@@ -37,7 +41,9 @@ var Recorder = React.createClass({
         <button className="stop" onClick={this.stopRecording}>
           Stop
         </button>
-        <button className="play" onClick={this.play}>Play</button>
+        <button className="play" onClick={this.playRecording}>Play</button>
+        <br/>
+        <button className="save" onClick={this.saveRecording}>Save</button>
       </div>
     );
   }
